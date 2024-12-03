@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Top Up Diamond Mobile Legends</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 20px;
+      }
+
+      header {
+        background: #007bff;
+        color: #fff;
+        padding: 10px 0;
+        text-align: center;
+      }
+
+      main {
+        margin: 20px 0;
+      }
+
+      h2 {
+        margin-top: 20px;
+      }
+
+      input,
+      select,
+      button {
+        margin: 10px 0;
+        padding: 10px;
+        width: 100%;
+        max-width: 300px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Top Up Diamond Mobile Legends</h1>
+    </header>
+    <main>
+      <h2>Masukkan ID Game Anda</h2>
+      <input type="text" id="gameId" placeholder="ID Game" />
+
+      <h2>Pilih Nominal Diamond</h2>
+      <select id="diamondAmount">
+        <option value="100">100 Diamond (Rp. 10.000)</option>
+        <option value="200">200 Diamond (Rp. 20.000)</option>
+        <option value="500">500 Diamond (Rp. 50.000)</option>
+        <option value="1000">1000 Diamond (Rp. 100.000)</option>
+      </select>
+
+      <h2>Pilih Metode Pembayaran</h2>
+      <select id="paymentMethod" onchange="updatePaymentOptions()">
+        <option value="">-- Pilih Metode Pembayaran --</option>
+        <option value="bank">Transfer Bank</option>
+        <option value="ewallet">E-Wallet</option>
+      </select>
+
+      <div id="paymentOptions" style="display: none">
+        <h3>Pilih Bank atau E-Wallet</h3>
+        <select id="bankOrEwallet">
+          <option value="">-- Pilih --</option>
+          <option value="bca">Bank BCA</option>
+          <option value="bni">Bank BNI</option>
+          <option value="bri">Bank BRI</option>
+          <option value="mandiri">Bank Mandiri</option>
+          <option value="cimb">CIMB Niaga</option>
+          <option value="ovo">OVO</option>
+          <option value="gopay">GoPay</option>
+          <option value="dana">DANA</option>
+          <option value="linkaja">LinkAja</option>
+        </select>
+      </div>
+
+      <button onclick="processPayment()">Top Up</button>
+    </main>
+    <footer>
+      <p>&copy; 2024 Top Up Diamond Mobile Legends</p>
+    </footer>
+    <script>
+      function updatePaymentOptions() {
+        var paymentMethod = document.getElementById("paymentMethod").value;
+        var paymentOptions = document.getElementById("paymentOptions");
+
+        if (paymentMethod) {
+          paymentOptions.style.display = "block";
+        } else {
+          paymentOptions.style.display = "none";
+        }
+      }
+
+      function processPayment() {
+        var gameId = document.getElementById("gameId").value;
+        var diamondAmount = document.getElementById("diamondAmount").value;
+        var paymentMethod = document.getElementById("paymentMethod").value;
+        var bankOrEwallet = document.getElementById("bankOrEwallet").value;
+
+        if (gameId && diamondAmount && paymentMethod && bankOrEwallet) {
+          alert(
+            "Top Up " +
+              diamondAmount +
+              " Diamond untuk ID Game " +
+              gameId +
+              " menggunakan " +
+              paymentMethod +
+              " (" +
+              bankOrEwallet +
+              ") berhasil diproses."
+          );
+        } else {
+          alert("Silakan lengkapi semua informasi.");
+        }
+      }
+    </script>
+  </body>
+</html>
